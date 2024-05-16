@@ -77,25 +77,21 @@ const Home = () => {
         className="flex justify-center items-center"
         onSubmit={onSubmitChat}
       >
-        {isLoading ? (
-          <div>로딩중</div>
-        ) : (
-          <>
-            <input
-              className="text-2xl p-2 focus:outline-none rounded-lg border-2 border-orange-200 focus:border-orange-400"
-              type="text"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
+        <input
+          className="text-2xl p-2 focus:outline-none rounded-lg border-2 border-orange-200 focus:border-orange-400"
+          type="text"
+          value={content}
+          disabled={isLoading}
+          onChange={(e) => setContent(e.target.value)}
+        />
 
-            <button
-              className="ml-4 flex justify-center items-center bg-orange-200 text-2xl px-4 py-[10px] rounded-full shadow-md shadow-orange-300 hover:bg-orange-300"
-              type="submit"
-            >
-              <TbRobot /> 검색
-            </button>
-          </>
-        )}
+        <button
+          className="ml-4 flex justify-center items-center bg-orange-200 text-2xl px-4 py-[10px] rounded-full shadow-md shadow-orange-300 hover:bg-orange-300"
+          type="submit"
+        >
+          {isLoading ? <TbRobot className="animate-spin" /> : <TbRobot />}
+          검색
+        </button>
       </form>
       <ul>
         {chatlist.map((v, i) => (
