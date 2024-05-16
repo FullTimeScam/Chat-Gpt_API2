@@ -6,7 +6,14 @@ import ChatlistCard from "../components/ChatlistCard";
 const Home = () => {
   const [content, setContent] = useState("");
   const [chatlist, setChatlist] = useState([]);
-  const [isLoading, setLoading] = useState();
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const savedChatlist = localStorage.getItem("savedChatlist");
+    if (savedChatlist) {
+      setChatlist(JSON.parse(savedChatlist));
+    }
+  }, []);
 
   const onSubmitChat = async (e) => {
     try {
@@ -61,16 +68,18 @@ const Home = () => {
       setLoading(false); // 로딩이 끝났다
 
       setChatlist([newChat, ...chatlist]);
+      setContent(""); // 입력칸 비우기
     } catch (error) {
       console.error(error);
 
-      setLoading(true); //에러가 떴을 때 다시 로딩중으로 돌아가기
+      setLoading(ture); //에러가 떴을 때 다시 로딩중으로 돌아가기
     }
   };
 
-  useEffect(() => {
-    console.log(chatlist);
-  }, [chatlist]);
+  const killHistory = () => {
+    localStorage.removeItem("savedChatlist");
+    setChatlist([]);
+  };
 
   return (
     <div className="mt-8 flex flex-col justify-center">
@@ -92,6 +101,13 @@ const Home = () => {
         >
           {isLoading ? <TbRobot className="animate-spin" /> : <TbRobot />}
           검색
+        </button>
+        <button
+          type="button"
+          onClick={killHistory}
+          className="ml-4 flex justify-center items-center bg-orange-200 text-2xl px-4 py-[10px] rounded-full shadow-md shadow-orange-300 hover:bg-orange-300"
+        >
+          기록 삭제
         </button>
       </form>
       <ul>
