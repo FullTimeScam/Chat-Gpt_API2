@@ -48,6 +48,10 @@ const Home = () => {
     console.log(chatlist);
   }, [chatlist]);
 
+  const onClickSave = () => {
+    localStorage.setItem("test", "안녕하세요");
+  };
+
   return (
     <div className="mt-8 flex flex-col justify-center">
       <form
@@ -73,6 +77,8 @@ const Home = () => {
           <ChatlistCard key={i} question={v.question} answer={v.answer} />
         ))}
       </ul>
+
+      <button onClick={onClickSave}>저장</button>
     </div>
   );
 };
