@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TbRobot } from "react-icons/tb";
+import ChatlistCard from "../components/ChatlistCard";
 
 const Home = () => {
   const [content, setContent] = useState("");
@@ -62,14 +63,9 @@ const Home = () => {
         </button>
       </form>
       <ul>
-        <li className="mt-8 px-4 bg-orange-50 p-4 rounded-md text-md">
-          <div className="mb-2 font-semibold flex flex-col gap-4">
-            Q. {chatlist?.question}
-          </div>
-          <div className="border-4 border-orange-300 p-4">
-            A. {chatlist?.answer}
-          </div>
-        </li>
+        {chatlist && (
+          <ChatlistCard question={chatlist.question} answer={chatlist.answer} />
+        )}
       </ul>
     </div>
   );
