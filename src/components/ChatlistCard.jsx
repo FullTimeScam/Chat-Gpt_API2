@@ -4,7 +4,7 @@ const ChatlistCard = ({ question, answer }) => {
       <div className="mb-2 font-semibold flex flex-col gap-4">
         Q. {question}
       </div>
-      <div className="border-4 border-orange-300 p-4">A. {answer}</div>
+      <div className="p-4">A. {answer}</div>
     </li>
   );
 };
