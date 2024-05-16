@@ -32,23 +32,40 @@ const Home = () => {
         }
       );
 
-      setChatlist([
-        {
-          question: content,
-          answer: response.data.choices[0].message.content,
-        },
-        ...chatlist,
-      ]);
+      const newChat = {
+        question: content,
+        answer: response.data.choices[0].message.content,
+      };
+
+      // 1. 기존 로컬스토리지를 불러온다 / 그리고 문자열을 배열화한다.(parse)
+      // if) 기존 로컬스토리지가 없다면 새 배열 생성
+      // 2.  기존 or 새 배열에 newChat 추가
+      // 3. 배열을 문자열 화 해서 저장
+
+      let savedChatlist = localStorage.getItem("savedChatlist");
+
+      if (!savedChatlist) {
+        savedChatlist = [];
+      } else {
+        savedChatlist = JSON.parse(savedChatlist);
+      }
+
+      savedChatlist.push(newChat);
+
+      localStorage.setItem("savedChatlist", JSON.stringify(savedChatlist));
+
+      setChatlist([newChat, ...chatlist]);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onClickSave = () => {
-    const test3 = localStorage.getItem("test3");
+  useEffect(() => {
+    console.log(chatlist);
+  }, [chatlist]);
 
-    console.log(test3);
-    console.log(typeof test3);
+  const onClickSave = () => {
+    localStorage.setItem("test", "안녕하세요");
   };
 
   return (
