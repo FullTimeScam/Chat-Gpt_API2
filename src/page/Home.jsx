@@ -61,12 +61,12 @@ const Home = () => {
           <TbRobot /> 검색
         </button>
       </form>
-      <ul className="mt-8 px-4 bg-orange-50 p-4 rounded-md text-md">
-        <li>
+      <ul>
+        <li className="mt-8 px-4 bg-orange-50 p-4 rounded-md text-md">
           <div className="mb-2 font-semibold flex flex-col gap-4">
             Q. {chatlist?.question}
           </div>
-          <div className="border-4 border-pink-100 p-4">
+          <div className="border-4 border-orange-300 p-4">
             A. {chatlist?.answer}
           </div>
         </li>
