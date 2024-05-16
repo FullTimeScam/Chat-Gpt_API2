@@ -68,9 +68,9 @@ const Home = () => {
         </button>
       </form>
       <ul>
-        {chatlist && (
-          <ChatlistCard question={chatlist.question} answer={chatlist.answer} />
-        )}
+        {chatlist.map((v, i) => (
+          <ChatlistCard key={i} question={v.question} answer={i.answer} />
+        ))}
       </ul>
     </div>
   );
