@@ -37,6 +37,7 @@ const Home = () => {
           question: content,
           answer: response.data.choices[0].message.content,
         },
+        ...chatlist,
       ]);
     } catch (error) {
       console.error(error);
@@ -69,7 +70,7 @@ const Home = () => {
       </form>
       <ul>
         {chatlist.map((v, i) => (
-          <ChatlistCard key={i} question={v.question} answer={i.answer} />
+          <ChatlistCard key={i} question={v.question} answer={v.answer} />
         ))}
       </ul>
     </div>
