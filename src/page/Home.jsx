@@ -49,7 +49,7 @@ const Home = () => {
   }, [chatlist]);
 
   const onClickSave = () => {
-    localStorage.setItem("test", "안녕하세요");
+    localStorage.setItem("test", "안녕하십니까");
   };
 
   return (
