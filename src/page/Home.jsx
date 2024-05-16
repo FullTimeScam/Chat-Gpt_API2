@@ -44,16 +44,8 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(chatlist);
-  }, [chatlist]);
-
   const onClickSave = () => {
-    const saveData = localStorage.getItem("test");
-    // localStorage.setItem("test", ["1", "2", "3"]);
-    const test = localStorage.getItem("test");
-    console.log(test);
-    console.log(typeof test);
+    localStorage.setItem("test2", JSON.stringify(["banana", "kiwi", "apple"]));
   };
 
   return (
