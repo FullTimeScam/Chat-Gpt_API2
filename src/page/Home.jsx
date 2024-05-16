@@ -45,13 +45,10 @@ const Home = () => {
   };
 
   const onClickSave = () => {
-    // localStorage.setItem("test2", JSON.stringify(["banana", "kiwi", "apple"]));
+    const test3 = localStorage.getItem("test3");
 
-    const test2 = localStorage.getItem("test2");
-    const parsedTest2 = JSON.parse(test2);
-
-    console.log(parsedTest2);
-    console.log(typeof parsedTest2);
+    console.log(test3);
+    console.log(typeof test3);
   };
 
   return (
