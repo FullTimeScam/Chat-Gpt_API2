@@ -49,7 +49,8 @@ const Home = () => {
   }, [chatlist]);
 
   const onClickSave = () => {
-    localStorage.setItem("test", "안녕하십니까");
+    const saveData = localStorage.getItem("test");
+    localStorage.setItem("test", saveData + "안녕하십니까");
   };
 
   return (
