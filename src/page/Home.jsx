@@ -5,7 +5,7 @@ import ChatlistCard from "../components/ChatlistCard";
 
 const Home = () => {
   const [content, setContent] = useState("");
-  const [chatlist, setChatlist] = useState();
+  const [chatlist, setChatlist] = useState([]);
 
   const onSubmitChat = async (e) => {
     try {
@@ -32,10 +32,12 @@ const Home = () => {
         }
       );
 
-      setChatlist({
-        question: content,
-        answer: response.data.choices[0].message.content,
-      });
+      setChatlist([
+        {
+          question: content,
+          answer: response.data.choices[0].message.content,
+        },
+      ]);
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +49,10 @@ const Home = () => {
 
   return (
     <div className="mt-8 flex flex-col justify-center">
-      <form className="flex" onSubmit={onSubmitChat}>
+      <form
+        className="flex justify-center items-center"
+        onSubmit={onSubmitChat}
+      >
         <input
           className="text-2xl p-2 focus:outline-none rounded-lg border-2 border-orange-200 focus:border-orange-400"
           type="text"
